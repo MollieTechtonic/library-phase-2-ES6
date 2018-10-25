@@ -1,34 +1,34 @@
-function RandomAuthorModal() {
-  Library.call(this); //resets context
-  this.$container = $('#random-author-display-modal');
-};
+// All functional with ES6
+class RandomAuthorModal extends Library {
+  constructor() {
+    super();
+    // CHANGED Library.call(this); //resets context
+    this.$container = $('#random-author-display-modal');
+  }
+
+  init() {
+    this._bindEvents();
+  }
+
+  _bindEvents() {
+    this.$container.on('shown.bs.modal', $.proxy(this._showRandom, this));
+    this.$container.on('hidden.bs.modal', () => {
+      $('#random-author-display-modal ul').empty();
+    });
+  }
+
+  _showRandom() {
+    $('#random-author-display-modal ul').append(`<li>${this.getRandomAuthorName()}</li>`);
+
+  }
+}
 
 
 //Creates new library object
-RandomAuthorModal.prototype = Object.create(Library.prototype);
+// CHANGED RandomAuthorModal.prototype = Object.create(Library.prototype);
 
 
-RandomAuthorModal.prototype.init = function() {
-  this._bindEvents();
-};
-
-
-RandomAuthorModal.prototype._bindEvents = function() {
-  this.$container.on('shown.bs.modal', $.proxy(this._showRandom, this));
-  this.$container.on('hidden.bs.modal', function() {
-    $('#random-author-display-modal ul').empty();
-  });
-};
-
-
-RandomAuthorModal.prototype._showRandom = function() {
-  $('#random-author-display-modal ul').append("<li>" + this.getRandomAuthorName() + "</li>");
-  // when modal closes, empty the ul section so that only one random author is ever shown
-
-};
-
-
-$(function() {
+$(() => {
   window.gRandomAuthorModal = new RandomAuthorModal();
   window.gRandomAuthorModal.init();
 });

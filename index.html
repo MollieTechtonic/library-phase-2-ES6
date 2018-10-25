@@ -80,36 +80,36 @@
             <form id="add-to-queue-form" class="clearfix" autocomplete="off">
               <div class="form-group">
                 <label for="title-add-input">Title *</label>
-                <input id="title-add-input" class="form-control" type="text" required="true" autofocus="autofocus">
+                <input id="title-add-input" name="title" class="form-control" type="text" required="true" autofocus="autofocus">
               </div>
               <div class="row">
                 <div class="form-group col-xs-9">
                   <label for="author-add-input">Author *</label>
-                  <input id="author-add-input" class="form-control" type="text" required="true">
+                  <input id="author-add-input" name="author" class="form-control" type="text" required="true">
                 </div>
                 <div class="form-group col-xs-3">
                   <label for="rating-add-input">Star Rating</label>
-                  <input id="rating-add-input" class="form-control" type="number" min="0" max="5">
+                  <input id="rating-add-input" name="rating" class="form-control" type="number" min="0" max="5">
                 </div>
               </div>
               <div class="row">
                 <div class="form-group col-xs-6">
                   <label for="pages-add-input">Pages</label>
-                  <input id="pages-add-input" class="form-control" type="number" value="300">
+                  <input id="pages-add-input" name="numberOfPages" class="form-control" type="number" value="300">
                 </div>
                 <div class="form-group col-xs-6">
                   <label for="date-add-input">Publication Date</label>
-                  <input id="date-add-input" class="form-control" type="date" value="2017-01-01">
+                  <input id="date-add-input" name="publishDate" class="form-control" type="date" value="2017-01-01">
                 </div>
               </div>
               <div class="form-group col-xs-12">
                 <label for="synopsis-add-input">Synopsis</label><br>
-                <textarea id="synopsis-add-input" name="textarea" cols="98" rows="5" maxlength="250">No synopsis available.</textarea>
+                <textarea id="synopsis-add-input" name="synopsis" cols="98" rows="5" maxlength="250">No synopsis available.</textarea>
               </div>
 
               <div class="form-group">
                 <label for="cover-add-input">Book cover</label>
-                <input id="cover-add-input" type="file" accept=".jpg, .jpeg, .png">
+                <input id="cover-add-input" name="cover" type="file" accept=".jpg, .jpeg, .png">
                 <img id="addBookCoverImage" class="tableImg" alt="book cover image"/>
               </div>
               <button id="queue-book-button" class="btn btn-default btn-add pull-left" type="submit">Queue Book To Add</button>
@@ -203,7 +203,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 id="display-book-header"class="modal-title"></h4>
+            <h4 id="display-book-header" class="modal-title"></h4>
           </div>
           <div class="modal-body">
             <div class="col-sm-6 book-cover"></div>

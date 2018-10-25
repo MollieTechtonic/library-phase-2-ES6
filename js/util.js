@@ -1,7 +1,7 @@
 function spacesToCamelCase(str) {
-  var splits = str.split(/(?=[A-Z]+)/); //splits string parameter on capital letters
-  var rejoined = splits.join(" "); //joins the split string array into a new string with spaces between elements
-  var myArr = [];
+  const splits = str.split(/(?=[A-Z]+)/); //splits string parameter on capital letters
+  const rejoined = splits.join(" "); //joins the split string array into a new string with spaces between elements
+  const myArr = [];
   for(i = 0;i < rejoined.length;i++)
   if(i === 0){
     myArr.push(rejoined[i].toUpperCase()) //capitalizes first letter to turn camelcase into pascal case
@@ -14,10 +14,10 @@ function spacesToCamelCase(str) {
 
 // BELOW FUNCTION TAKES IN AN ARRAY OF OBJECTS AND RETURNS THEM AS A NEW ARRAY OF ***BOOK*** OBJECTS.
 function bookify(arr) {
-  var tempArr = [];
-  for (var i = 0; i < arr.length; i++) {
-    var myObj = new Object();
-    for (var key in arr[i]) {
+  const tempArr = [];
+  for (let i = 0; i < arr.length; i++) {
+    const myObj = new Object();
+    for (const key in arr[i]) {
         myObj[key] = arr[i][key];
     }
     tempArr.push(new Book(myObj));
@@ -32,23 +32,24 @@ function formatDate(date) {
     return;
   }
 
-  var months = [
+  const months = [
     "Jan", "Feb", "Mar", "Apr", "May", "Jun",
     "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
   ];
 
-  var day = date.getDate();
-  var month = date.getMonth();
-  var year = date.getFullYear();
+  const day = date.getDate();
+  const month = date.getMonth();
+  const year = date.getFullYear();
 
-  var formattedDate = months[month] + " " + day + ", " + year;
+  // CHANGED **************************USING TEMPLATE LITERALS (`TEXT TEXT $(EXPRESSION)`) INSTEAD OF " " AND CONCAT FOR STRING CREATION**********************
+  const formattedDate = `${months[month]} ${day}, ${year}`;
   return formattedDate;
 };
 
 function stars(rating) {
-  var $div = $('<div>');
-  for(var i=0; i<5; i++) {
-    var $star = $('<span>').addClass('fa fa-star');
+  const $div = $('<div>');
+  for(let i=0; i<5; i++) {
+    const $star = $('<span>').addClass('fa fa-star');
     if(i<rating){ $star.addClass('checked'); }
     $div.append($star);
   }
@@ -57,9 +58,9 @@ function stars(rating) {
 
 //This is an extension
 Array.prototype.unique = function(key) {
-  var a = this.concat();
-  for(var i=0; i<a.length; ++i) {
-    for(var j=i+1; j<a.length; ++j) {
+  const a = this.concat();
+  for(let i=0; i<a.length; ++i) {
+    for(let j=i+1; j<a.length; ++j) {
       if(a[i][key].toLowerCase() === a[j][key].toLowerCase()) {
         a.splice(j--, 1);
       }
